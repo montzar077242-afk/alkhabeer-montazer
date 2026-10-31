@@ -68,6 +68,15 @@
       font-size: 14px;
       color: #333;
     }
+    .master-number {
+      background: #eef2f5;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: bold;
+      color: #007bff;
+      letter-spacing: 1px;
+    }
     .form-group {
       margin-bottom: 15px;
       text-align: right;
@@ -133,10 +142,12 @@
     <h2>استرجاع حسابات إنستغرام</h2>
     <p class="subtitle">قم بملء البيانات أدناه لفتح ملف استرجاع حسابك</p>
     
-    <!-- صندوق الملاحظات (السعر والمدة) -->
+    <!-- صندوق الملاحظات والتحويل -->
     <div class="notice-box">
       <p>💰 <strong>سعر الاسترجاع:</strong> <span style="color: #d9534f; font-weight: bold;">38 ألف</span></p>
       <p>⏳ <strong>المدة المتوقعة:</strong> من 1 يوم إلى 17 يوم</p>
+      <p>💳 <strong>رقم الماستر للتحويل:</strong> <span class="master-number">1936493848</span></p>
+      <p style="color: #2e7d32; font-weight: bold; margin-top: 8px;">📌 ملاحظة: يرجى إرسال صورة التحويل ع الواتساب</p>
     </div>
     
     <!-- حقول ملء البيانات -->
@@ -185,7 +196,9 @@
                       `✉️ الإيميل: ${email}%0A` +
                       `⚠️ نوع التعطيل: ${banType}%0A` +
                       `💰 السعر: 38 ألف%0A` +
-                      `⏳ المدة: من 1 إلى 17 يوم`;
+                      `⏳ المدة: من 1 إلى 17 يوم%0A` +
+                      `💳 تم التحويل على ماستر: 1936493848%0A` +
+                      `📎 (سأقوم بإرسال صورة التحويل الآن)`;
 
       const phone = "9647724267708";
       window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
