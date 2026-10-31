@@ -4,15 +4,193 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>استرجاع حسابات إنستغرام</title>
-  <!-- مكتبة الأيقونات FontAwesome -->
+  <!-- مكتبة الأيقونات FontAwesome لإضافة شعار إنستغرام وواتساب -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* خلفية جديدة أنيقة وهادئة بتدرج مميز */
-      background: linear-gradient(135deg, #1e1e2f 0%, #2a2a40 100%);
+      background: linear-gradient(135deg, #f0f2f5, #e1e8ed);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      margin
+      margin: 0;
+      padding: 15px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      padding: 30px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* تأثير زخرفي علوي بلون إنستغرام */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    }
+    .insta-logo {
+      font-size: 50px;
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df5950 45%, #c62368 60%, #4f46e5 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    .card h2 {
+      margin: 0 0 5px 0;
+      color: #1c1e21;
+      font-size: 22px;
+    }
+    .card p.subtitle {
+      color: #65676b;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .notice-box {
+      background: #fafafa;
+      border: 1px solid #e1e8ed;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: right;
+    }
+    .notice-box p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+      text-align: right;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #4b4f56;
+      font-size: 13px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #ccd0d5;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+      outline: none;
+      background-color: #fdfdfd;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: #bc1888;
+      box-shadow: 0 0 0 3px rgba(188, 24, 136, 0.1);
+      background-color: #fff;
+    }
+    .btn-whatsapp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      background-color: #25D366;
+      color: #fff;
+      text-align: center;
+      padding: 13px 0;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease, transform 0.1s ease;
+      text-decoration: none;
+    }
+    .btn-whatsapp:hover {
+      background-color: #20ba5a;
+    }
+    .btn-whatsapp:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- أيقونة إنستغرام بألوانها الشهيرة -->
+    <div class="insta-logo">
+      <i class="fab fa-instagram"></i>
+    </div>
+    
+    <h2>استرجاع حسابات إنستغرام</h2>
+    <p class="subtitle">قم بملء البيانات أدناه لفتح ملف استرجاع حسابك</p>
+    
+    <!-- صندوق الملاحظات (السعر والمدة) -->
+    <div class="notice-box">
+      <p>💰 <strong>سعر الاسترجاع:</strong> <span style="color: #d9534f; font-weight: bold;">38 ألف</span></p>
+      <p>⏳ <strong>المدة المتوقعة:</strong> من 1 يوم إلى 17 يوم</p>
+    </div>
+    
+    <!-- حقول ملء البيانات -->
+    <form id="recoveryForm">
+      <div class="form-group">
+        <label for="username">يوزر الحساب:</label>
+        <input type="text" id="username" placeholder="مثال: @username" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">الإيميل المرتبط بالحساب:</label>
+        <input type="email" id="email" placeholder="example@gmail.com" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="banType">نوع التعطيل:</label>
+        <select id="banType">
+          <option value="تعطيل نهائي">تعطيل نهائي</option>
+          <option value="تعطيل جنسي">تعطيل جنسي</option>
+          <option value="تعطيل اباحي">تعطيل اباحي</option>
+          <option value="تعطيل طعن">تعطيل طعن</option>
+          <option value="لا اعرف">لا اعرف</option>
+        </select>
+      </div>
+
+      <!-- زر الواتساب المباشر -->
+      <button type="button" class="btn-whatsapp" onclick="sendToWhatsApp()">
+        <i class="fab fa-whatsapp" style="font-size: 20px;"></i> إرسال الطلب عبر واتساب
+      </button>
+    </form>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const banType = document.getElementById('banType').value;
+      
+      if(!username || !email) {
+        alert('يرجى ملء يوزر الحساب والإيميل أولاً.');
+        return;
+      }
+
+      const message = `مرحباً، أود استرجاع حساب إنستغرام:%0A` +
+                      `👤 اليوزر: ${username}%0A` +
+                      `✉️ الإيميل: ${email}%0A` +
+                      `⚠️ نوع التعطيل: ${banType}%0A` +
+                      `💰 السعر: 38 ألف%0A` +
+                      `⏳ المدة: من 1 إلى 17 يوم`;
+
+      const phone = "9647744606460";
+      window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>
